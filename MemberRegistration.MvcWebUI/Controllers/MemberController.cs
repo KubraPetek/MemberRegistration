@@ -1,4 +1,5 @@
-﻿using MemberRegistration.Entities.Concreate;
+﻿using MemberRegistration.Business.Abstract;
+using MemberRegistration.Entities.Concreate;
 using MemberRegistration.MvcWebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ namespace MemberRegistration.MvcWebUI.Controllers
 {
     public class MemberController : Controller
     {
+        private IMemberService _memberService;
+        public MemberController(IMemberService memberService)
+        {
+            _memberService = memberService;
+        }
         // GET: Member
         public ActionResult Add()
         {
@@ -18,6 +24,7 @@ namespace MemberRegistration.MvcWebUI.Controllers
         [HttpPost]
         public ActionResult Add(Member member)
         {
+            _memberService.Add(member);
             return View(new MemberAddViewModel());
         }
     }
