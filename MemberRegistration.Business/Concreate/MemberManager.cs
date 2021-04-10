@@ -27,6 +27,11 @@ namespace MemberRegistration.Business.Concreate
         {
             //KPSPublicSoapClient client = new KPSPublicSoapClient();  ---Miktoservis miamarisine ters , servisin değişme ihtimali var 
             //client.TCKimlikNoDogrula();
+            if (_memberDal.Get(m=>m.TcNo==member.TcNo)!=null)//Daha önce aynı tc no ile işlem yapılmış mı ?
+            {
+                throw new Exception("Bu kullanıcı daha önce kayıt olmuştur!");
+            }
+
             if (!_kpsService.ValidateUser(member))
             {
                 throw new Exception("Kullanıcı doğrulaması geçerli değil!");
