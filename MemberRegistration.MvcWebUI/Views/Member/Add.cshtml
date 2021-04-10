@@ -9,6 +9,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <title>Add</title>
 </head>
 <body class="bg-light">
@@ -29,32 +32,32 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">Adınız</label>
-                                <input type="text" class="form-control" id="firstName" name="member.firstName" placeholder="" value="" required>
+                                @Html.TextBoxFor(m=>m.Member.FirstName,new {@class="form-control" })
                             </div>
-
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Soyadınız</label>
-                                <input type="text" class="form-control" id="lastName" name="member.lastName" placeholder="" value="" required>
-                            </div>
-
+                            @Html.ValidationMessageFor(model => model.Member.FirstName, "", new { @class = "test-danger" })
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Soyadınız</label>
+                            @Html.TextBoxFor(m => m.Member.LastName, new { @class = "form-control" })
+                        </div>
+                            @Html.ValidationMessageFor(model => model.Member.LastName, "", new { @class = "test-danger" })
                             <div class="col-12">
                                 <label for="tcNo" class="form-label">Tc Kimlik Numaranız</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text"></span>
-                                    <input type="text" class="form-control" id="tcNo" name="member.tcNo" placeholder="" required>
+                                    @Html.TextBoxFor(m => m.Member.TcNo, new { @class = "form-control" })
                                 </div>
                             </div>
-
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="member.email" placeholder="you@example.com" required>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="dateOfBirth" class="form-label">Doğum Tarihiniz</label>
-                                <input type="text" class="form-control" id="dateOfBirth" name="member.dateOfBirth" placeholder="06/01/1994" required>
-                            </div>
-
+                            @Html.ValidationMessageFor(model => model.Member.TcNo, "", new { @class = "test-danger" })
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            @Html.TextBoxFor(m => m.Member.Email, new { @class = "form-control" })
+                        </div>
+                            @Html.ValidationMessageFor(model => model.Member.Email, "", new { @class = "test-danger" })
+                        <div class="col-12">
+                            <label for="dateOfBirth" class="form-label">Doğum Tarihiniz</label>
+                            @Html.TextBoxFor(m => m.Member.DateOfBirth, new { @class = "form-control" })
+                        </div>
+                            @Html.ValidationMessageFor(model => model.Member.DateOfBirth, "", new { @class = "test-danger" })
 
                             <hr class="my-4">
                         </div>
