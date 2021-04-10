@@ -22,6 +22,8 @@
                 <img class="d-block mx-auto mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
                 <h2>Kayıt Formu</h2>
                 <p class="lead">Lütfen Bilgilerinizi Giriniz! </p>
+                <p class="lead">@Html.ValidationMessage("MemberException") </p>
+             
             </div>
             @using (Html.BeginForm())
             {
